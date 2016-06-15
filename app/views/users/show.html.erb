@@ -4,13 +4,13 @@
 <p>Member since: <%= @user.created_at.strftime('%m/%d/%y') %></p>
 <div id='user-collections'>
   <div class='collection'>
-    <h4>Library</h4>
+    <h3>Library</h4>
     <% @user.games.each do |game| %>
     <a href="/games/<%= game.id %>"><%= game.name %></a>
     <% end %>
   </div>
   <div class='collection'>
-    <h4>Friends</h4>
+    <h3>Friends</h4>
     <% @user.all_friends.each do |friend| %>
     <a href="/users/<%= friend.id %>"><%= friend.username %></a>
     <% end %>
