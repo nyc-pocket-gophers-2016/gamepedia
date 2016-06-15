@@ -1,5 +1,8 @@
+<div class="jumbotron">
+
 <h1> <%= @game.name %> </h1>
-<h2> <%= @game.description %> </h2>
+<h2> <%= @game.description %></h2>
+<h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
 
  <% if @game.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +18,21 @@
     </div>
   <% end %>
 
+  <div class="inline">
+    <form action="/games/<%= @game.id %>/upvote" method="post">
+      <input type="submit" value="Upvote" width="100" class="btn btn-primary">
+      <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
+    </form>
+  </div>
 
-<%= link_to 'Update Game', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
-
+  <div class="inline">
+    <form action="/games/<%= @game.id %>/downvote" method="post">
+      <input type="submit" value="Downvote" width="100" class="btn btn-primary">
+      <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
+    </form>
+  </div>
+  <div>
+    <%= link_to 'Update Game', edit_game_path(@game) %> |
+    <%= link_to 'Back', games_path %>
+  </div>
+</div>

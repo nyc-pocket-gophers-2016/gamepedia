@@ -45,10 +45,21 @@ class GamesController < ApplicationController
     end
   end
 
+  def upvote
+    @game = Game.find_by(id: params[:id])
+    @upvote = @game.votes.create(value: 1, user_id: session[:user_id])
+    redirect_to @game
+  end
+
+  def downvote
+    @game = Game.find_by(id: params[:id])
+    @downvote = @game.votes.create(value: -1, user_id: session[:user_id])
+    redirect_to @game
+  end
+
   private
     def game_params
       params.require(:game).permit(:name, :description, :creator_id, :avg_play_time, :min_players, :max_players)
     end
-
 
 end
