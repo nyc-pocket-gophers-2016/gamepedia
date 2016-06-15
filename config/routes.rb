@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete 'sessions/destroy' => 'sessions#destroy'
 
   resources :games
+  post 'games/:id/upvote' => 'games#upvote'
+  post 'games/:id/downvote' => 'games#downvote'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
