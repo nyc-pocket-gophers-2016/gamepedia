@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <h1>The Board Games</h1>
+
+  <table>
+    <tr>
+      <th>Name  </th>
+      <th> Description</th>
+
+    </tr>
+
+    <% @games.each do |game| %>
+      <tr>
+        <td><a href="/games/<%= game.id %>"> <%= game.name %> </a></td>
+        <td><%= game.description.capitalize %></td>
+       <% if logged_in? && current_user.id == game.creator_id %>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you certain you want to delete this game?' } %></td>
+
+        <% end %>
+      </tr>
+
+
+
+    <% end %>
+  </table>
+
+  <% if logged_in? %>
+    <h2> <%= link_to 'Add a New Game', new_game_path %> </h2>
+  <% end %>
+</div>
