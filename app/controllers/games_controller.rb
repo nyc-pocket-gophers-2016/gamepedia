@@ -8,7 +8,11 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
+    if request.xhr?
+      render '_new-game-form', layout: false
+    else
+      @game = Game.new
+    end
   end
 
   def edit
