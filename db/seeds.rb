@@ -197,4 +197,3 @@ Friendship.create!(friends)
 Tag.create!(tags)
 GameTag.create!(game_tags)
 Comment.create!(comments)
-
