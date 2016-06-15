@@ -35,6 +35,15 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game = Game.find_by(id: params[:id])
+    if session[:user_id] == @game.creator_id
+      @game.destroy
+      redirect_to '/'
+    else
+      render 'show'
+    end
+  end
 
   private
     def game_params
