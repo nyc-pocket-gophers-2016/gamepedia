@@ -1,0 +1,19 @@
+<div class="jumbotron">
+<h1><%= @user.username %></h1>
+<h4>Email: <%= @user.email%></h4>
+<p>Member since: <%= @user.created_at.strftime('%m/%d/%y') %></p>
+<div id='user-collections'>
+  <div class='collection'>
+    <h4>Library</h4>
+    <% @user.games.each do |game| %>
+    <a href="/games/<%= game.id %>"><%= game.name %></a>
+    <% end %>
+  </div>
+  <div class='collection'>
+    <h4>Friends</h4>
+    <% @user.all_friends.each do |friend| %>
+    <a href="/users/<%= friend.id %>"><%= friend.username %></a>
+    <% end %>
+  </div>
+</div>
+</div>

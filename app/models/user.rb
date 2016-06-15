@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :votes
+
+  def all_friends
+    (self.friends + self.inverse_friends).uniq
+  end
 end
