@@ -17,4 +17,10 @@
     </div>
   </div>
   <% end %>
+
+  <div>
+    <% if logged_in? %>
+    <h2><%= link_to 'Add a game', new_game_path %></h2>
+    <% end %>
+  </div>
 </div>
