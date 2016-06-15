@@ -1,0 +1,24 @@
+<h1>Board Games</h1>
+
+
+
+<table>
+  <tr>
+    <th>Name  </th>
+    <th> Description</th>
+    <th> Update Game </th>
+  </tr>
+
+  <% @games.each do |game| %>
+    <tr>
+      <td><a href="/games/<%= game.id %>"> <%= game.name %> </a></td>
+      <td><%= game.description.capitalize %></td>
+      <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    </tr>
+
+
+
+  <% end %>
+</table>
+
+<h2> <%= link_to 'Add a New Game', new_game_path %> </h2>
