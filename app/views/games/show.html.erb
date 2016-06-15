@@ -1,7 +1,8 @@
 <div class="jumbotron">
 
 <h1> <%= @game.name %> </h1>
-<h2> <%= @game.description %></h2>
+
+<h2><%= @game.description %></h2>
 <h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
 
  <% if @game.errors.any? %>
@@ -35,4 +36,13 @@
     <%= link_to 'Update Game', edit_game_path(@game) %> |
     <%= link_to 'Back', games_path %>
   </div>
+
+<h2>Comments:</h2>
+<%= render @game.comments %>
+
+<% if logged_in? %>
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+<% end %>
+
 </div>

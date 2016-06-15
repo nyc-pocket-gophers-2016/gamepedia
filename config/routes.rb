@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post 'games/:id/upvote' => 'games#upvote'
   post 'games/:id/downvote' => 'games#downvote'
 
+  resources :games do
+    resources :comments
+  end
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
