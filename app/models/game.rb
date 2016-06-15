@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_many :game_tags
   has_many :tags, through: :game_tags, source: :tag

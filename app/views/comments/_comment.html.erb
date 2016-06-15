@@ -1,0 +1,23 @@
+<div class='comment'>
+
+<p>
+  User:
+  <span><%= comment.user.username %></span>
+</p>
+
+<p>
+  Comment:
+  <span><%= comment.body %></span>
+</p>
+
+<% if logged_in? && current_user.id == comment.user_id %>
+<p>
+  <%= link_to 'Delete Comment', [comment.game, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>
+
+<hr>
+
+</div>
