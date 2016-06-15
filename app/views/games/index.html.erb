@@ -1,30 +1,26 @@
 <div class="jumbotron">
-  <h1>The Board Games</h1>
+  <h1>Games</h1>
+  <% @games.each do |game| %>
+  <div class='game-container'>
+    <h2><%= link_to game.name, game_path(game) %></h2>
 
-  <table>
-    <tr>
-      <th>Name  </th>
-      <th> Description</th>
-
-    </tr>
-
-    <% @games.each do |game| %>
-      <tr>
-        <td><a href="/games/<%= game.id %>"> <%= game.name %> </a></td>
-        <td><%= game.description.capitalize %></td>
-       <% if logged_in? && current_user.id == game.creator_id %>
-          <td><%= link_to 'Edit', edit_game_path(game) %></td>
-          <td><%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you certain you want to delete this game?' } %></td>
-
-        <% end %>
-      </tr>
-
-
-
-    <% end %>
-  </table>
-
-  <% if logged_in? %>
-    <h2> <%= link_to 'Add a New Game', new_game_path %> </h2>
+    <div class='game-description'>
+    <h7><%= game.votes.sum(:value).to_s + " points" %></h7>
+      <p><%= game.description[0..250] + "..." %></p>
+      <%= link_to 'Read more', game_path(game) %>
+      <% if session['user_id'] == game.creator_id %>
+        <div class='edit-btns'>
+          <%= link_to 'Edit', edit_game_path(game) %><br>
+          <%= link_to 'Delete', game_path(game), method: :delete, data: { confirm: 'Are you certain you want to delete this game?' } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <% end %>
+
+  <div>
+    <% if logged_in? %>
+    <h2><%= link_to 'Add a game', new_game_path %></h2>
+    <% end %>
+  </div>
 </div>

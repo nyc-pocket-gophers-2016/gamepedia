@@ -8,12 +8,34 @@
 
 .collection {
   display: inline-block;
-  padding: 10px;
+  padding-left: 20px;
   border: 1px solid black;
   background: white;
   width: 400px;
+  vertical-align: top;
+  min-height: 130px;
 }
 
+.game-container {
+  border: 1px solid black;
+  background: white;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  height: 500px;
+  text-align: center;
+}
+
+.game-description {
+  width: 300px;
+  text-align: left;
+  margin: auto;
+}
+
+.edit-btns {
+  vertical-align: bottom;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
