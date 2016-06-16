@@ -94,18 +94,18 @@ games = [
    max_players:5}
 ]
 
-friends = [
-  {user_id:1,
-   friend_id:2},
-  {user_id:1,
-   friend_id:3},
-  {user_id:2,
-   friend_id:3},
-  {user_id:2,
-   friend_id:4},
-  {user_id:3,
-   friend_id:4}
-]
+# friends = [
+#   {user_id:1,
+#    friend_id:2},
+#   {user_id:1,
+#    friend_id:3},
+#   {user_id:2,
+#    friend_id:3},
+#   {user_id:2,
+#    friend_id:4},
+#   {user_id:3,
+#    friend_id:4}
+# ]
 
 tags =[
   {name:"Money"},
@@ -193,7 +193,7 @@ comments = [
 
 User.create!(users)
 Game.create!(games)
-Friendship.create!(friends)
+# Friendship.create!(friends)
 Tag.create!(tags)
 GameTag.create!(game_tags)
 Comment.create!(comments)
