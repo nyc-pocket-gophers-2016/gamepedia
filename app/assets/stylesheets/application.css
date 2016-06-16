@@ -52,6 +52,12 @@
   display: none;
 }
 
+#map{
+  margin: auto;
+  width: 625px;
+  height: 500px;
+}
+
 .spaced-btn {
   margin: 2px;
 }

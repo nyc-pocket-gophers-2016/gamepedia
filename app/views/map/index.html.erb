@@ -1,0 +1,56 @@
+<div class="jumbotron">
+  <div id="map"></div>
+</div>
+<script>
+var map;
+var infowindow;
+
+function initMap() {
+  var myCoords = {lat: 40.706417, lng:-74.009089}
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: myCoords,
+    zoom: 12
+  });
+
+
+  var beachMarker = new google.maps.Marker({
+    position: myCoords,
+    map: map
+  });
+
+  infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+  service.nearbySearch({
+    location: myCoords,
+    radius: 5000,
+    name: "game store"
+  }, callback);
+}
+
+function callback(results, status) {
+  if (status === google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      createMarker(results[i]);
+    }
+  }
+}
+
+
+function createMarker(place) {
+  var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+    icon: image
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+</script>
+
