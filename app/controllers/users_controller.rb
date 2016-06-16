@@ -43,6 +43,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def friend_request
+    from_id = current_user.id
+    to_id = params[:id] # this is the id of the user you want to become friend with
+    friendship = Friendship.create(from_id: from_id, to_id: to_id, accepted: false)
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)

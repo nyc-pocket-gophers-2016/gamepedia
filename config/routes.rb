@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :friendships
   resources :users
 
   get    'sessions/login'   => 'sessions#new'
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
+  # post 'friendships' => 'friendships#create'
+  # put 'friendships/:id' => 'friendships#update'
+  # delete 'friendships/:id' => 'friendships#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

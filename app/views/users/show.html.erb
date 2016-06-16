@@ -9,11 +9,49 @@
     <%= link_to game.name, game_path(game), class: 'btn btn-primary spaced-btn' %>
     <% end %>
   </div>
-  <div class='collection'>
-    <h3>Friends</h4>
-    <% @user.all_friends.each do |friend| %>
-    <%= link_to friend.username, user_path(friend), class: 'btn btn-primary spaced-btn' %>
+
+<% unless current_user == @user %>
+        <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
     <% end %>
-  </div>
+
+    <h4>Your Friends</h4>
+    <ul>
+        <% @user.friends.each do |friend| %>
+        <li>
+          <%= friend.email %>
+          <% if current_user == @user %>
+            <%= button_to "Remove", friendship_path(:id => friend), :method => :delete %>
+          <% end %>
+          <br>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if current_user == @user %>
+        <h4>Incoming Friend Requests</h4>
+        <ul>
+            <% @user.requested_friendships.each do |requesting_friend| %>
+            <li>
+              <%= requesting_friend.email %>
+              <%= button_to "Accept", "/friendships/#{requesting_friend.id}", :method => :put %>
+              <%= button_to "Decline", "/friendships/#{requesting_friend.id}", :method => :delete %>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <% if current_user == @user %>
+        <h4>Outgoing Friend Requests </h4>
+        <ul>
+            <% @user.pending_friends.each do |pending_friend| %>
+            <li>
+              <%= pending_friend.email %>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
+
+
+
 </div>
 </div>
