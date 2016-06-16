@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @new_tag = Tag.new
     @game = Game.find_by(id: params[:id])
   end
 

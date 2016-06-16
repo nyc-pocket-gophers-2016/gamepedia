@@ -1,14 +1,21 @@
 $(document).ready(function(){
-  $("#add-new-game").on("click", function(event){
+  $('#add-tag-btn').on('click', function(event){
     event.preventDefault();
-    var $target = $(event.target);
+    $('#add-tag-form').toggle();
+  });
+});
 
-    $.ajax({
-      method: "get",
-      url: $target.attr("href")
-    }).done(function(response){
-      $("#new-game-form-div").append(response)
-    })
-  })
+// $(document).ready(function(){
+//   $("#add-new-game").on("click", function(event){
+//     event.preventDefault();
+//     var $target = $(event.target);
 
-})
+//     $.ajax({
+//       method: "get",
+//       url: $target.attr("href")
+//     }).done(function(response){
+//       $("#new-game-form-div").append(response)
+//     })
+//   })
+
+// })
