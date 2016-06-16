@@ -12,4 +12,12 @@ class Game < ActiveRecord::Base
 
   validates :creator_id, :name, :description, :avg_play_time, :min_players, :max_players, presence: true
   validates :name, uniqueness: true
+
+  def self.ordered
+      select('games.*, SUM(votes.value) AS votes_value').
+        joins(:votes).
+        group('games.id').
+        order('votes_value DESC')
+  end
+
 end
