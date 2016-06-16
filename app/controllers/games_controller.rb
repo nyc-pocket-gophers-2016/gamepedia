@@ -68,6 +68,11 @@ class GamesController < ApplicationController
     redirect_to User.find(session['user_id'])
   end
 
+  def uncollect
+    (GameUser.find_by(game_id: params[:game_id], user_id: session['user_id'])).destroy
+    redirect_to User.find(session['user_id'])
+  end
+
   private
     def game_params
       params.require(:game).permit(:name, :description, :creator_id, :avg_play_time, :min_players, :max_players)
