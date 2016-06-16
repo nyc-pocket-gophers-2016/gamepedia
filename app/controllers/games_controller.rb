@@ -30,7 +30,6 @@ class GamesController < ApplicationController
     end
   end
 
-
   def update
   @game = Game.find_by(id: params[:id])
     if @game.update(game_params)
@@ -60,6 +59,11 @@ class GamesController < ApplicationController
     @game = Game.find_by(id: params[:id])
     @downvote = @game.votes.create(value: -1, user_id: session[:user_id])
     redirect_to @game
+  end
+
+  def collect
+    GameUser.find_or_create_by(game_id: params[:game_id], user_id: session['user_id'])
+    redirect_to User.find(session['user_id'])
   end
 
   private
