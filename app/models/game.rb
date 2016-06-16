@@ -17,6 +17,15 @@ class Game < ActiveRecord::Base
       select('games.*, SUM(votes.value) AS votes_value').
         joins(:votes).
         group('games.id').
+        where('votes.value > 0').
+        order('votes_value DESC')
+  end
+
+  def self.negative
+      select('games.*, SUM(votes.value) AS votes_value').
+        joins(:votes).
+        group('games.id').
+        where('votes.value < 0').
         order('votes_value DESC')
   end
 
