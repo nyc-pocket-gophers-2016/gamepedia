@@ -27,6 +27,7 @@ class FriendshipsController < ApplicationController
       @friendship = current_user.friendships.build(:friend_id => params[:friend_id], approved: "false")
       if @friendship.save
         flash[:notice] = "Friend requested."
+        # flash.alert = "Friend requested."
         redirect_to :back
       else
         flash[:error] = "Unable to request friendship."
@@ -41,7 +42,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.where(friend_id: current_user.id, user_id: params[:id]).first
     @friendship.update(approved: true)
       if @friendship.save
-        redirect_to current_user, :notice => "Successfully confirmed friend!"
+        redirect_to current_user, :notice => "Friend confirmed!"
       else
         redirect_to current_user, :notice => "Sorry! Could not confirm friend!"
       end
@@ -52,7 +53,8 @@ class FriendshipsController < ApplicationController
 def destroy
       @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
       @friendship.destroy
-      flash[:notice] = "Removed friendship."
+      flash[:notice] = "Friendship rejected."
+
       redirect_to :back
     end
 

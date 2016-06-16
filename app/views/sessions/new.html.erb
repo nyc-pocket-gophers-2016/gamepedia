@@ -1,7 +1,9 @@
 <div class="jumbotron">
   <h1>Login</h1>
 <%= form_tag sessions_path %>
+
 <%= render 'errors' %>
+
   <p>
     <%= label_tag :username %><br>
     <%= text_field_tag :username, nil, placeholder: "Username" %>
