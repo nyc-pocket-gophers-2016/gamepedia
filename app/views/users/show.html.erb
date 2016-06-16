@@ -6,13 +6,13 @@
   <div class='collection'>
     <h3>Library</h4>
     <% @user.games.each do |game| %>
-    <%= link_to game.name, game_path(game), class: 'btn btn-primary' %>
+    <%= link_to game.name, game_path(game), class: 'btn btn-primary spaced-btn' %>
     <% end %>
   </div>
   <div class='collection'>
     <h3>Friends</h4>
     <% @user.all_friends.each do |friend| %>
-    <%= link_to friend.username, user_path(friend), class: 'btn btn-primary' %>
+    <%= link_to friend.username, user_path(friend), class: 'btn btn-primary spaced-btn' %>
     <% end %>
   </div>
 </div>

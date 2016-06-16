@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get    'tags/new'  => 'tags#new'
     post   'tags'      => 'tags#create'
     post   'game_users'=> 'games#collect'
+    delete 'game_users'=> 'games#uncollect'
   end
 
   resources :tags, only: [:index, :show]

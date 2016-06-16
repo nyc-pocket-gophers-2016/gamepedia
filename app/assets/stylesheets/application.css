@@ -13,7 +13,8 @@
   background: white;
   width: 400px;
   vertical-align: top;
-  min-height: 130px;
+  min-height: 300px;
+  padding-bottom: 10px;
 }
 
 .game-container {
@@ -49,4 +50,8 @@
 
 #add-tag-form {
   display: none;
+}
+
+.spaced-btn {
+  margin: 2px;
 }
