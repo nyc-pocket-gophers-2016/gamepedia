@@ -58,6 +58,10 @@
   height: 500px;
 }
 
+#map-title {
+  text-align: center;
+}
+
 .spaced-btn {
   margin: 2px;
 }
