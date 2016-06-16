@@ -5,6 +5,7 @@
   <title>Gamepedia</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvOKW8hJj2zZNBHvfGk_XSjWyEN_aBgzw&libraries=places&callback=initMap" async defer></script>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "rails" %>
   <%= csrf_meta_tags %>
@@ -25,12 +26,12 @@
         <%if logged_in?%>
         <li><%= link_to current_user.username.capitalize, "/users/#{current_user.id}" %></li>
         <li><%= link_to 'Logout', '/sessions/destroy', method: 'delete' %></li>
-        <li><%= link_to 'Add a New Game', '/games/new', { id: "add-new-game"} %></li>
+<!--         <li><%= link_to 'Add a New Game', '/games/new', { id: "add-new-game"} %></li> -->
         <% else %>
         <li><%= link_to 'Register', '/users/new' %></li>
         <li><%= link_to 'Login', '/sessions/login' %></li>
         <% end %>
-        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Store Locator', '/map' %></li>
       </ul>
       </div>
     </div>

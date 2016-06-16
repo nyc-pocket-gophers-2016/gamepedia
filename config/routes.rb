@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     delete 'game_users'=> 'games#uncollect'
   end
 
+
   resources :tags, only: [:index, :show]
+
+  get 'map' => 'map#index'
+
 
   # post 'friendships' => 'friendships#create'
   # put 'friendships/:id' => 'friendships#update'
