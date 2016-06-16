@@ -58,6 +58,15 @@
   height: 500px;
 }
 
+#map-title {
+  text-align: center;
+}
+
 .spaced-btn {
   margin: 2px;
+}
+
+.user-container {
+  display: inline-block;
+  margin: 10px;
 }

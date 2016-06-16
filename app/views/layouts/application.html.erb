@@ -19,18 +19,19 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/games">Games <span class="sr-only">(current)</span></a></li>
-          <li><a href="/tags">Tags</a></li>
+          <li class= <%= active_if('games') %>><a href="/games">Games</a></li>
+          <li class= <%= active_if('tags') %>><a href="/tags">Tags</a></li>
+          <li class= <%= active_if('users') if !params['id'] %>><a href="/users">Users</a></li>
         </ul>
       <ul class="nav navbar-nav navbar-right">
         <%if logged_in?%>
-        <li><%= link_to current_user.username.capitalize, "/users/#{current_user.id}" %></li>
+        <li class= <%= active_if('users') if params['id'] %>><%= link_to current_user.username.capitalize, user_path(current_user) %></li>
         <li><%= link_to 'Logout', '/sessions/destroy', method: 'delete' %></li>
         <% else %>
         <li><%= link_to 'Register', '/users/new' %></li>
         <li><%= link_to 'Login', '/sessions/login' %></li>
         <% end %>
-        <li><%= link_to 'Store Locator', '/map' %></li>
+        <li class= <%= active_if('map') %>><%= link_to 'Store Locator', '/map' %></li>
       </ul>
       </div>
     </div>

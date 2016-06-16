@@ -3,8 +3,7 @@
 
 <% @users.each do |user| %>
   <div class='user-container'>
-    <h3><a href="/users/<%= user.id %>"><%= user.username %></a></h3>
-    <p>Member since <%= user.created_at.strftime('%m/%d/%y') %></p>
+    <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h3>
   </div>
 <% end %>
 

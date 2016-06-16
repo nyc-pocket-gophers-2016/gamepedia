@@ -9,7 +9,6 @@
     <%= link_to game.name, game_path(game), class: 'btn btn-primary spaced-btn' %>
     <% end %>
   </div>
-
 <% unless current_user == @user %>
         <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
     <% end %>
