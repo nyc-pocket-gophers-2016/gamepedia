@@ -1,0 +1,6 @@
+<div class='jumbotron'>
+  <h1><%= @tag.name %></h1>
+  <% @tag.games.each do |game| %>
+    <div class='inline'><%= link_to game.name, game_path(game), class: 'btn btn-primary' %></div>
+  <% end %>
+</div>

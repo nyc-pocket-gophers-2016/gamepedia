@@ -12,10 +12,11 @@ Rails.application.routes.draw do
 
   resources :games do
     resources :comments
+    get    'tags/new'  => 'tags#new'
+    post   'tags'      => 'tags#create'
   end
 
-
-
+  resources :tags, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

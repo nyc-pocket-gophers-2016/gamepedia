@@ -1,0 +1,8 @@
+<div class='jumbotron'>
+  <h1>Tags</h1>
+  <div>
+    <% Tag.all.each do |tag| %>
+      <div class="inline"><%= link_to tag.name, tag_path(tag), class: 'btn btn-primary' %></div>
+    <% end %>
+  </div>
+</div>

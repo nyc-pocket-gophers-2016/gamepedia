@@ -1,6 +1,20 @@
 <div class="jumbotron">
 
-<h1> <%= @game.name %> </h1>
+<div class="inline"><h1> <%= @game.name %> </h1></div>
+<div>
+  <% @game.tags.each do |tag| %>
+    <div class="inline"><%= link_to tag.name, tag_path(tag), class: 'btn btn-primary' %></div>
+  <% end %>
+</div>
+<% if logged_in? %>
+<%= link_to "Tag this game!", tags_path, id: 'add-tag-btn' %>
+<div id='add-tag-form'>
+  <%= form_for [@game, @new_tag] do |t| %>
+    <%= t.text_field :name %>
+    <%= t.submit 'Submit' %>
+  <% end -%>
+</div>
+<% end %>
 
 <h2><%= @game.description %></h2>
 <h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
