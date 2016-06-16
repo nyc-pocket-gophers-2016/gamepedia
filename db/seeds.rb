@@ -35,6 +35,18 @@ users = [
    password: 'bob'}
 ]
 
+# random users
+40.times do
+  args = {
+    username: Faker::Name.first_name.downcase,
+    email: Faker::Internet.email,
+    password: '0000'
+  }
+  users << args
+end
+
+User.create!(users)
+
 
 games = [
   {name: 'Catan',
@@ -94,18 +106,57 @@ games = [
    max_players:5}
 ]
 
-# friends = [
-#   {user_id:1,
-#    friend_id:2},
-#   {user_id:1,
-#    friend_id:3},
-#   {user_id:2,
-#    friend_id:3},
-#   {user_id:2,
-#    friend_id:4},
-#   {user_id:3,
-#    friend_id:4}
-# ]
+Game.create!(games)
+
+
+friends = [
+  {user_id: 1,
+   friend_id: 2,
+   approved: true},
+  {user_id: 1,
+   friend_id: 3,
+   approved: true},
+  {user_id: 2,
+   friend_id: 3,
+   approved: true},
+  {user_id: 2,
+   friend_id: 4,
+   approved: true},
+  {user_id: 3,
+   friend_id: 4,
+   approved: true}
+]
+
+# random friendships
+120.times do
+  user_index = rand(User.all.length)
+  friend_index = rand(User.all.length)
+  if user_index != friend_index
+    args = {
+      user: User.all[user_index],
+      friend: User.all[friend_index],
+      approved: true
+    }
+    friends << args
+  end
+end
+
+# random friend requests
+40.times do
+  user_index = rand(User.all.length)
+  friend_index = rand(User.all.length)
+  if user_index != friend_index
+    args = {
+      user: User.all[user_index],
+      friend: User.all[friend_index],
+      approved: false
+    }
+    friends << args
+  end
+end
+
+Friendship.create!(friends)
+
 
 tags =[
   {name:"Money"},
@@ -116,6 +167,7 @@ tags =[
   {name:"Adventure"},
   {name:"Complicated"}
 ]
+Tag.create!(tags)
 
 game_tags=[
   {game_id:1,
@@ -175,6 +227,8 @@ game_tags=[
   {game_id: 8,
    tag_id:4}
 ]
+GameTag.create!(game_tags)
+
 
 comments = [
   {body:"This game is awesome!",
@@ -190,10 +244,25 @@ comments = [
    user_id:2,
    game_id: 2}
 ]
-
-User.create!(users)
-Game.create!(games)
-# Friendship.create!(friends)
-Tag.create!(tags)
-GameTag.create!(game_tags)
 Comment.create!(comments)
+
+Game.all.each do |game|
+  count = 5 + rand(5)
+  count.times do
+    user_index = rand(User.all.length)
+    game_index = rand(Game.all.length)
+    comment = game.comments.build(
+      body: Faker::Hipster.sentence,
+      user: User.all[user_index],
+      game: Game.all[game_index],
+      created_at: Time.now - rand(20000))
+    comment.save
+  end
+  # (5 + rand(20)).times do
+  #   vote = question.votes.build(
+  #     value: 1,
+  #     user: User.all[user_index],
+  #     created_at: Time.now - rand(20000))
+  #   vote.save
+  # end
+end
