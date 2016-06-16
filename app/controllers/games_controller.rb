@@ -51,13 +51,15 @@ class GamesController < ApplicationController
 
   def upvote
     @game = Game.find_by(id: params[:id])
-    @upvote = @game.votes.create(value: 1, user_id: session[:user_id])
+    @upvote = @game.votes.find_or_create_by(user_id: session[:user_id])
+    @upvote.update_attributes(value: 1)
     redirect_to @game
   end
 
   def downvote
     @game = Game.find_by(id: params[:id])
-    @downvote = @game.votes.create(value: -1, user_id: session[:user_id])
+    @downvote = @game.votes.find_or_create_by(user_id: session[:user_id])
+    @downvote.update_attributes(value: -1)
     redirect_to @game
   end
 
