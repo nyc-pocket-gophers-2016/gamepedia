@@ -41,6 +41,7 @@
               <%= requesting_friend.email %>
               <%= button_to "Accept", "/friendships/#{requesting_friend.id}", :method => :put %>
               <%= button_to "Decline", "/friendships/#{requesting_friend.id}", :method => :delete %>
+              <br>
             </li>
           <% end %>
         </ul>
@@ -52,6 +53,7 @@
             <% @user.pending_friends.each do |pending_friend| %>
             <li>
               <%= pending_friend.email %>
+              <br>
             </li>
           <% end %>
         </ul>
