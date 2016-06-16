@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :comments
     get    'tags/new'  => 'tags#new'
     post   'tags'      => 'tags#create'
+    post   'game_users'=> 'games#collect'
   end
 
   resources :tags, only: [:index, :show]
