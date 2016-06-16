@@ -70,3 +70,11 @@
   display: inline-block;
   margin: 10px;
 }
+
+.text-primary {
+  font-size: 2em;
+}
+
+#login_error {
+  color: #FF00FF;
+}

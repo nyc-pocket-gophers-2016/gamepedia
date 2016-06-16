@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
       active_friends | passive_friends
     end
 
+    # def requestable
+    #   current_user == @user && self.friendships | self.pending_friends
+    # end
+
   has_many :comments
   has_many :votes
 
