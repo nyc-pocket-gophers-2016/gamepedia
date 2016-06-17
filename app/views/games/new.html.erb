@@ -25,7 +25,7 @@
 
   <p>
     <%= f.label :description %><br>
-    <%= f.text_field :description, placeholder: "Description" %>
+    <%= f.text_area :description, placeholder: "Description" %>
   </p>
 
   <p>
@@ -48,7 +48,7 @@
 
   <%= f.hidden_field :creator_id, :value => current_user.id %> <br>
 
-  <%= f.submit "Submit New Game" %>
+  <%= f.submit "Submit New Game", class: 'btn btn-primary' %>
   <% end %>
 
   <%= link_to 'Back', games_path %>

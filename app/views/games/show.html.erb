@@ -1,72 +1,75 @@
 <div class="jumbotron">
-<div id='game-show-content'>
-<div class="inline"><h1> <%= @game.name %> </h1></div>
-<div>
-  <% @game.tags.each do |tag| %>
-    <div class="inline"><%= link_to tag.name, tag_path(tag), class: 'btn btn-primary' %></div>
-  <% end %>
-</div>
-<% if logged_in? %>
-<%= link_to "Tag this game", tags_path, id: 'add-tag-btn' %>
-<% if current_user.games.include?(@game) %>
-<div><%= link_to "Remove this game from your collection", game_game_users_path(@game), method: 'delete' %></div>
-<% else %>
-<div><%= link_to "Add this game to your collection", game_game_users_path(@game), method: 'post' %></div>
-<% end %>
-<div id='add-tag-form'>
-  <%= form_for [@game, @new_tag] do |t| %>
-    <%= t.text_field :name %>
-    <%= t.submit 'Submit' %>
-  <% end -%>
-</div>
-<% end %>
-
-<div id='game-description'><h2><%= @game.description %></h2></div>
-<h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
-
- <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@game.errors.count, "error") %> prohibited
-        this game from being saved:
-      </h2>
-      <ul>
-        <% @game.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="inline">
-    <form action="/games/<%= @game.id %>/upvote" method="post">
-      <input type="submit" value="Upvote" width="100" class="btn btn-primary">
-      <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
-    </form>
-  </div>
-
-  <div class="inline">
-    <form action="/games/<%= @game.id %>/downvote" method="post">
-      <input type="submit" value="Downvote" width="100" class="btn btn-primary">
-      <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
-    </form>
-  </div>
+  <div id='game-show-content'>
+  <div class="inline"><h1> <%= @game.name %> </h1></div>
   <div>
-    <% if session['user_id'] == @game.creator_id %>
-      <%= link_to 'Edit Game', edit_game_path(@game) %> |
-      <%= link_to 'Delete Game', game_path(@game), method: :delete, data: { confirm: 'Are you certain you want to delete this game?' } %>
+    <% @game.tags.each do |tag| %>
+      <div class="inline"><%= link_to tag.name, tag_path(tag), class: 'btn btn-primary' %></div>
     <% end %>
   </div>
+  <% if logged_in? %>
+  <%= link_to "Tag this game", tags_path, id: 'add-tag-btn' %>
+  <% if current_user.games.include?(@game) %>
+  <div><%= link_to "Remove this game from your collection", game_game_users_path(@game), method: 'delete' %></div>
+  <% else %>
+  <div><%= link_to "Add this game to your collection", game_game_users_path(@game), method: 'post' %></div>
+  <% end %>
+  <div id='add-tag-form'>
+    <%= form_for [@game, @new_tag] do |t| %>
+      <%= t.text_field :name %>
+      <%= t.submit 'Submit' %>
+    <% end -%>
+  </div>
+  <% end %>
 
-<h2>Comments:</h2>
-<%= render @game.comments %>
+  <div id='game-description'><h2><%= @game.description %></h2></div>
+  <h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
 
-<% if logged_in? %>
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
-<% end %>
+   <% if @game.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@game.errors.count, "error") %> prohibited
+          this game from being saved:
+        </h2>
+        <ul>
+          <% @game.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="inline">
+      <form action="/games/<%= @game.id %>/upvote" method="post">
+        <input type="submit" value="Upvote" width="100" class="btn btn-primary">
+        <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
+      </form>
+    </div>
+
+    <div class="inline">
+      <form action="/games/<%= @game.id %>/downvote" method="post">
+        <input type="submit" value="Downvote" width="100" class="btn btn-primary">
+        <input type="hidden" name="authenticity_token" value="Y7IAubRLr3aG3KJ/aUKs8PTreIqzU8pdvgymU13Ess42za71+k/C3RBx7b/rTvLpMG7eLE4YSvM+xz1MKkG6AA==">
+      </form>
+    </div>
+    <div>
+      <% if session['user_id'] == @game.creator_id %>
+        <%= link_to 'Edit Game', edit_game_path(@game) %> |
+        <%= link_to 'Delete Game', game_path(@game), method: :delete, data: { confirm: 'Are you certain you want to delete this game?' } %>
+      <% end %>
+    </div>
+
+  <h2>Comments:</h2>
+  <%= render @game.comments %>
+
+  <% if logged_in? %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+  <% end %>
+  </div>
+
+  <div id='game-image'>
+    <%= image_tag @game.image.standard.url %>
+  </div>
+
 </div>
-</div>
-
-<%= image_tag @game.image.standard.url %>
 
