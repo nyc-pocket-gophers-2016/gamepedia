@@ -49,6 +49,12 @@ class UsersController < ApplicationController
     friendship = Friendship.create(from_id: from_id, to_id: to_id, accepted: false)
   end
 
+  def live_search
+    @users = User.where('username LIKE ?', "%#{params[:q]}%").all
+
+    render :layout => false
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)

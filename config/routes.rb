@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
 
   get 'map' => 'map#index'
+  post '/users/search' => 'users#live_search'
 
 
   # post 'friendships' => 'friendships#create'

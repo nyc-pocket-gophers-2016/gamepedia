@@ -36,7 +36,7 @@ users = [
 ]
 
 # random users
-40.times do
+1000.times do
   args = {
     username: Faker::Name.first_name.downcase,
     email: Faker::Internet.email,
