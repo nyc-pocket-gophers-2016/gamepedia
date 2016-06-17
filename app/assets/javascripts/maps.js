@@ -3,11 +3,11 @@ var infowindow;
 var pos;
 
 function initMap() {
-  var myCoords = {lat: 40.706417, lng:-74.009089}
+  var myCoords = {lat: 0, lng:0}
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: myCoords,
-    zoom:5
+    zoom:1
   });
 
   var infoWindow = new google.maps.InfoWindow({map: map});
@@ -47,10 +47,6 @@ function initMap() {
       'Error: The Geolocation service failed.' :
       'Error: Your browser doesn\'t support geolocation.');
   }
-  // var beachMarker = new google.maps.Marker({
-  //   position: myCoords,
-  //   map: map
-  // });
 }
 
 function callback(results, status) {
