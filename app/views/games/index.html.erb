@@ -1,6 +1,3 @@
-<!-- <img id="site-logo" src="/images/gamepedia_1.jpg"> -->
-<!-- <img id="site-logo" src="images/gamepedia_logo_3.jpg">
-< -->
 <section id="logo-background-image">
   <h1 id="gamepedia">Gamepedia</h1>
   <h2 id="tag-line-1">Find rare & popular board games.</h2>
@@ -8,7 +5,13 @@
   <h2 id="tag-line-3">Connect with other board-game enthusiasts.</h2>
   </section>
 <div class="jumbotron">
-  <h1>Games</h1>
+    <h1>Games
+      <% if logged_in? %>
+      <%= link_to 'Add a New Game', new_game_path, class: "btn btn-primary btn-lg" %>
+      <% end %>
+    </h1>
+
+
   <% @games.each do |game| %>
   <div class='game-container'>
     <h2><%= link_to game.name, game_path(game) %></h2>
@@ -27,9 +30,5 @@
   </div>
   <% end %>
 
-  <div>
-    <% if logged_in? %>
-    <h2><%= link_to 'Add a game', new_game_path %></h2>
-    <% end %>
-  </div>
+
 </div>
