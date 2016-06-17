@@ -3,14 +3,42 @@ var infowindow;
 var pos;
 
 function initMap() {
-  var myCoords = {lat: 0, lng:0}
+  var myCoords = {lat: 0, lng:0};
+
+  var customMapType = new google.maps.StyledMapType([
+    {
+      stylers: [
+        {hue: '#890000'},
+        {visibility: 'simplified'},
+        {gamma: 0.5},
+        {weight: 0.5}
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [{visibility: 'off'}]
+    },
+    {
+      featureType: 'water',
+      stylers: [{color: '#3367D6'}]
+    }
+  ], {
+    name: 'Custom Style'
+  });
+  var customMapTypeId = 'custom_style';
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: myCoords,
-    zoom:1
+    zoom:1,
+    mapTypeControlOptions:{
+    mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
+    }
   });
+    map.mapTypes.set(customMapTypeId, customMapType);
+  map.setMapTypeId(customMapTypeId);
 
-  var infoWindow = new google.maps.InfoWindow({map: map});
+
+  infoWindow = new google.maps.InfoWindow({map: map});
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
