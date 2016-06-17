@@ -87,7 +87,7 @@ games = [
    min_players: 1,
    max_players:6},
 
-  {name: 'The Campaign for North Africa',
+  {name: 'Campaign for North Africa',
    description: 'This is a war game like no other. Although the map is big (10 feet / 3.048 m) the game is smaller than other games (Europa for one). There are not as many rules as in ASL. And yet this is the biggest monster game out there for a number of reasons. The game is detailed to a degree no other game has come close to. If using the full rules you keep track of every individual plane and pilot in the three year campaign. Each counter on the board representing a ground unit is composed of many units which are kept track of on logs. Supplies are kept track of and dispersed in a very detailed manner.',
    creator_id: 3,
    avg_play_time:60000,
