@@ -17,7 +17,7 @@
     <h2><%= link_to game.name, game_path(game) %></h2>
 
     <div class='game-description'>
-    <h7><%= game.votes.sum(:value).to_s + " points" %></h7>
+    <div class='pts-count'><h7><%= pluralize(game.votes.sum(:value), 'point') %></h7></div>
       <p><%= game.description[0..250] + "..." %></p>
       <%= link_to 'Read more', game_path(game) %>
       <% if session['user_id'] == game.creator_id %>
