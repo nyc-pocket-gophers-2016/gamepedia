@@ -1,0 +1,165 @@
+@import url(http://db.onlinewebfonts.com/c/6ccfc974fd52c656851e7c67c0a38c4a?family=AbadiMTW01-CondExtraBold);
+
+@import url(http://db.onlinewebfonts.com/c/90be0e54cbefed03767a417320f0961c?family=MYuppy-Bold-DDC);
+
+@import url(http://db.onlinewebfonts.com/c/511ba9756571ca23448373ce46e4b149?family=MYuppyHKS);
+
+@import url(http://db.onlinewebfonts.com/c/4bfcbca43f8e9ab6573aff70d9d3d39c?family=Helvetica+Neue+LT+Com);
+
+#logo-background-image {
+  background-image: image-url("gamepedia_logo_6.jpg");
+  height: 420px;
+  background-size: cover;
+
+}
+
+#add-game-button {
+  border-radius: 8px;
+  font-size: 35px;
+  font-family: "Helvetica Neue LT Com";
+  color: red;
+  background-color: blue;
+
+}
+
+
+#gamepedia {
+  height: 420px;
+  line-height: 2.6;
+  margin-right: 145px;
+  margin-bottom: 0;
+  font-size: 6.5em;
+  font-weight: normal;
+  padding: 0;
+  text-align: right;
+  color: #ffffff;
+  font-family: "AbadiMTW01-CondExtraBold";
+
+}
+
+#tag-line-1 {
+ height: 420px;
+  line-height: 1.6;
+  margin-right: 140px;
+  margin-top: -240px;
+  font-size: 2.0em;
+  font-weight: normal;
+  padding: 0;
+  text-align: right;
+  /*font-family: "MYuppy-BoldD-DC";*/
+  font-family: "Helvetica Neue LT Com";
+  color: #CCFFFF;
+}
+
+#tag-line-2 {
+ height: 420px;
+  line-height: 1.6;
+  margin-right: 155px;
+  margin-top: -390px;
+  font-size: 2.0em;
+  font-weight: normal;
+  padding: 0;
+  text-align: right;
+  color: #CCFFFF;
+  font-family: "Helvetica Neue LT Com";
+  /*font-family: "MYuppy-KR-Bold-DDC";*/
+
+}
+
+#tag-line-3 {
+  height: 420px;
+  line-height: 1.6;
+  margin-right: 50px;
+  margin-top: -390px;
+  font-size: 2.0em;
+  font-weight: normal;
+  padding: 0;
+  text-align: right;
+  color: #CCFFFF;
+  font-family: "Helvetica Neue LT Com";
+}
+
+
+
+.red-border {
+  border: 1px solid red;
+}
+
+.jumbotron {
+  padding-top: -1000px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+
+}
+
+.collection {
+  display: inline-block;
+  padding-left: 20px;
+  border: 1px solid black;
+  background: white;
+  width: 400px;
+  vertical-align: top;
+  min-height: 300px;
+  padding-bottom: 10px;
+}
+
+.game-container {
+  border: 1px solid black;
+  background: white;
+  border-radius: 5px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+  height: 500px;
+  text-align: center;
+}
+
+.game-description {
+  width: 300px;
+  text-align: left;
+  margin: auto;
+}
+
+
+.edit-btns {
+  vertical-align: bottom;
+}
+
+.inline {
+  display: inline-block;
+}
+
+
+
+#add-tag-form {
+  display: none;
+}
+
+#map{
+  margin: auto;
+  width: 625px;
+  height: 500px;
+}
+
+#map-title {
+  text-align: center;
+}
+
+.spaced-btn {
+  margin: 2px;
+}
+
+.user-container {
+  display: inline-block;
+  margin: 10px;
+}
+
+.text-primary {
+  font-size: 2em;
+}
+
+#login_error {
+  color: #FF00FF;
+}
