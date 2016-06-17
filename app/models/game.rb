@@ -1,4 +1,7 @@
+require_relative '../uploaders/image_uploader.rb'
+
 class Game < ActiveRecord::Base
+
   belongs_to :creator, class_name: 'User'
   has_many :comments, dependent: :destroy
 
@@ -12,6 +15,8 @@ class Game < ActiveRecord::Base
 
   validates :creator_id, :name, :description, :avg_play_time, :min_players, :max_players, presence: true
   validates :name, uniqueness: true
+
+  mount_uploader :image, ImageUploader
 
   def self.ordered
       select('games.*, SUM(votes.value) AS votes_value').
