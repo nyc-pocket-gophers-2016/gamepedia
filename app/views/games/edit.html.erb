@@ -1,3 +1,7 @@
+<div class="jumbotron">
+
+  <h1> Update Game: </h1>
+
 <%= form_for :game, url: game_path(@game), method: :patch do |f| %>
 
   <% if @game.errors.any? %>
@@ -16,39 +20,38 @@
 
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Name" %>
   </p>
 
   <p>
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: "Description" %>
   </p>
 
   <p>
     <%= f.label :average_play_time %><br>
-    <%= f.text_area :avg_play_time %>
+    <%= f.text_field :avg_play_time, placeholder: "Average Play Time" %>
   </p>
 
   <p>
-    <%= f.label :minimum_amount_of_players %><br>
-    <%= f.text_area :min_players %>
+    <%= f.label :minimum_number_of_players %><br>
+    <%= f.select :min_players, [1, 2, 3, 4, 5, 6, 7, 8, 9]%>
   </p>
 
   <p>
-    <%= f.label :maximum_amount_of_players %><br>
-    <%= f.text_area :max_players %>
+    <%= f.label :maximum_number_of_players %><br>
+    <%= f.select :max_players, [1, 2, 3, 4, 5, 6, 7, 8, 9]%>
   </p>
 
-  <p>
-    <%= f.hidden_field :creator_id, :value => current_user.id %> <br>
-  </p>
+  <%= f.label :image %><br>
+  <%= f.file_field :image %>
 
-  <p>
-    <%= f.submit "Update Game" %>
-  </p>
+  <%= f.hidden_field :creator_id, :value => current_user.id %> <br>
+
+  <%= f.submit "Submit", class: 'btn btn-primary' %>
 
 <% end %>
 
 
 <%= link_to 'Back', games_path %>
-
+</div>
