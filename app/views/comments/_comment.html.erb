@@ -1,14 +1,9 @@
 <div class='comment'>
 
-<p>
-  User:
-  <span><%= comment.user.username %></span>
-</p>
-
-<p>
-  Comment:
-  <span><%= comment.body %></span>
-</p>
+<div class='comment-container'>
+  <p><%= comment.body %></p>
+  <h6>posted by <%= comment.user.username %> on <%= comment.created_at.strftime('%m/%d/%y') %></h6>
+</div>
 
 <% if logged_in? && current_user.id == comment.user_id %>
 <p>

@@ -1,5 +1,5 @@
 <div class="jumbotron">
-
+<div id='game-show-content'>
 <div class="inline"><h1> <%= @game.name %> </h1></div>
 <div>
   <% @game.tags.each do |tag| %>
@@ -21,7 +21,7 @@
 </div>
 <% end %>
 
-<h2><%= @game.description %></h2>
+<div id='game-description'><h2><%= @game.description %></h2></div>
 <h4>Vote count: <%= @game.votes.sum(:value)%> </h4>
 
  <% if @game.errors.any? %>
@@ -65,5 +65,5 @@
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 <% end %>
-
+</div>
 </div>

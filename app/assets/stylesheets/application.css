@@ -89,3 +89,16 @@
   font-size: 12px;
   padding: 2px;
 }
+
+.comment-container {
+  max-width: 600px;
+  background: white;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+#game-description {
+  max-width: 900px;
+}
+
