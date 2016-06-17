@@ -24,11 +24,10 @@
     <ul>
         <% @user.friends.each do |friend| %>
         <li>
-          <%= friend.email %>
+          <div class='friend-elm' class='inline'><%= link_to friend.username, user_path(friend) %></div>
           <% if current_user == @user %>
-            <%= button_to "Remove", friendship_path(:id => friend), :method => :delete %>
+            <div class='inline'><%= button_to "Remove", friendship_path(:id => friend), :method => :delete, class: 'btn btn-primary remove-btn' %></div>
           <% end %>
-          <br>
         </li>
       <% end %>
     </ul>
@@ -38,7 +37,7 @@
         <ul>
             <% @user.requested_friendships.each do |requesting_friend| %>
             <li>
-              <%= requesting_friend.email %>
+              <%= link_to requesting_friend.username, user_path(requesting_friend) %>
               <%= button_to "Accept", "/friendships/#{requesting_friend.id}", :method => :put %>
               <%= button_to "Decline", "/friendships/#{requesting_friend.id}", :method => :delete %>
               <br>
@@ -52,7 +51,7 @@
         <ul>
             <% @user.pending_friends.each do |pending_friend| %>
             <li>
-              <%= pending_friend.email %>
+              <%= link_to pending_friend.username, user_path(pending_friend) %>
               <br>
             </li>
           <% end %>

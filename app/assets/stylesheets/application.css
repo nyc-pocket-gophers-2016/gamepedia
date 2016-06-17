@@ -78,3 +78,14 @@
 #login_error {
   color: #FF00FF;
 }
+
+.friend-elm {
+  width: 60px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.remove-btn {
+  font-size: 12px;
+  padding: 2px;
+}
