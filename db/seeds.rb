@@ -42,7 +42,10 @@ users = [
     email: Faker::Internet.email,
     password: '0000'
   }
-  users << args
+  unless (users.map{|x| x[:username]}).include?(args[:username])
+    users << args
+  end
+
 end
 
 User.create!(users)
@@ -230,21 +233,21 @@ game_tags=[
 GameTag.create!(game_tags)
 
 
-comments = [
-  {body:"This game is awesome!",
-   user_id:1,
-   game_id:2},
-  {body:"My life is over, my wife and kids left me I only have 650 hours left to play. Best game ever!",
-   user_id:4,
-   game_id:6},
-  {body:"Bit simple but fun",
-   user_id:3,
-   game_id:7},
-  {body:"I want to play this game asap!",
-   user_id:2,
-   game_id: 2}
-]
-Comment.create!(comments)
+# comments = [
+#   {body:"This game is awesome!",
+#    user_id:1,
+#    game_id:2},
+#   {body:"My life is over, my wife and kids left me I only have 650 hours left to play. Best game ever!",
+#    user_id:4,
+#    game_id:6},
+#   {body:"Bit simple but fun",
+#    user_id:3,
+#    game_id:7},
+#   {body:"I want to play this game asap!",
+#    user_id:2,
+#    game_id: 2}
+# ]
+# Comment.create!(comments)
 
 Game.all.each do |game|
   count = 5 + rand(5)
