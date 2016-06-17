@@ -1,10 +1,11 @@
 <div class="jumbotron">
-<h1>List of Users</h1>
+<h1>Find Users</h1>
 
-<% @users.each do |user| %>
-  <div class='user-container'>
-    <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h3>
-  </div>
-<% end %>
+<form id="live-search-form" method="get" action="users/search">
+  <input id="big-search-box" name="q" type="text"/>
+
+</form>
+
+<div id="live-search-results"></div>
 
 </div>
